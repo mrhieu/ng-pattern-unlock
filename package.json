@@ -1,0 +1,27 @@
+{
+  "name": "ng-pattern-unlock",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.js",
+  "author": "Hieu Pham",
+  "license": "MIT",
+  "dependencies": {},
+  "scripts": {
+    "postinstall": "gulp inject-vendor"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.17.0",
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-natural-sort": "^0.1.1",
+    "gulp-sass": "latest",
+    "gulp-util": "latest",
+    "jshint": "latest",
+    "jshint-stylish": "latest",
+    "require-dir": "latest",
+    "shelljs": "latest",
+    "through": "latest",
+    "wiredep": "^4.0.0"
+  }
+}
