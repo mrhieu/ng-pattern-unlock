@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  
+
   angular.module('app', [
     'ngAnimate',
     'ngRoute',
@@ -8,6 +8,7 @@
     'ngTouch',
     'ui.router',
     'ui.bootstrap',
-    'ngStorage'
+    'ngStorage',
+    'patternUnlock'
   ]);
 })();

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="app">
   <head>
     <meta charset="utf-8">
     <title>Android-like Pattern Unlock</title>
@@ -9,8 +9,8 @@
     <!-- endbower -->
     <link rel="stylesheet" href="css/app.css">
   </head>
-  <body ng-app="app" ng-controller="AppCtrl as app">
-    <h1>{{app.greeting}}</h1>
+  <body>
+    <ui-view></ui-view>
 
     <!-- bower:js -->
     <script src="../bower_components/angular/angular.js"></script>
@@ -33,9 +33,11 @@
 
     <!-- inject:js -->
 
-    <script src="components/patternUnlock/unlock.controller.js"></script>
+    <script src="components/patternUnlock/unlock.config.js"></script>
 
     <script src="components/patternUnlock/unlock.service.js"></script>
+
+    <script src="components/patternUnlock/pattern.directive.js"></script>
 
     <!-- endinject -->
   </body>

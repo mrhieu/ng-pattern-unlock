@@ -1,2 +1,29 @@
 body
-  background-color: #f3f3f3
+  padding-top: 70px
+
+.modal-fullscreen
+  .modal-dialog, .modal-content
+    width: 100% !important
+    height: 100% !important
+    margin: 0!important
+    border-radius: 0
+
+.pattern-container
+  overflow: hidden
+  display: inline-block
+
+.pattern-node
+  padding: 20px
+  border-radius: 50%
+  border: 5px solid #aaa
+  float: left
+  margin: 20px
+  &.active
+    border-color: #337ab7
+    .dot
+      background-color: darken(#337ab7, 20%)
+  .dot
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background-color: darken(#aaa, 20%)
