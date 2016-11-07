@@ -11,6 +11,7 @@ body
 .pattern-container
   overflow: hidden
   display: inline-block
+  position: relative
 
 .pattern-node
   padding: 20px
@@ -27,3 +28,49 @@ body
     height: 10px
     border-radius: 50%
     background-color: darken(#aaa, 20%)
+
+.pattern-line
+  width: 110px
+  height: 10px
+  border-radius: 5px
+  background-color: rgba(darken(#337ab7, 20%), .7)
+  position: absolute
+  left: 45px
+  top: 45px
+  transform-origin: 5px 5px
+  &.e
+    transform: rotate(0deg)
+  &.w
+    transform: rotate(180deg)
+  &.s
+    transform: rotate(90deg)
+  &.n
+    transform: rotate(270deg)
+  &.x
+    width: 152px
+    &.es, &.se
+      transform: rotate(45deg)
+    &.en, &.ne
+      transform: rotate(-45deg)
+    &.wn, &.nw
+      transform: rotate(-135deg)
+    &.ws, &.sw
+      transform: rotate(135deg)
+  &.xx
+    width: 233px
+    &.ees
+      transform: rotate(26.5deg)
+    &.sse
+      transform: rotate(63.5deg)
+    &.ssw
+      transform: rotate(116.5deg)
+    &.wws
+      transform: rotate(153.5deg)
+    &.wwn
+      transform: rotate(206.5deg)
+    &.nnw
+      transform: rotate(243.5deg)
+    &.nne
+      transform: rotate(296.5deg)
+    &.een
+      transform: rotate(333.5deg)

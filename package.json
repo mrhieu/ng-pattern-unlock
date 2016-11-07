@@ -6,9 +6,7 @@
   "author": "Hieu Pham",
   "license": "MIT",
   "dependencies": {},
-  "scripts": {
-    "postinstall": "gulp inject-vendor"
-  },
+  "scripts": {},
   "devDependencies": {
     "browser-sync": "^2.17.0",
     "gulp": "^3.9.1",

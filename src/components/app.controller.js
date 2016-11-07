@@ -16,6 +16,6 @@
     vm.unlock = function() {
       PatternUnlockService.unlock();
     }
-    // vm.unlock();
+    vm.unlock();
   }
 })();

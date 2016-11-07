@@ -17,12 +17,7 @@
           keyboard: false,
           backdrop: 'static',
           size: 'lg',
-          windowClass: 'modal-fullscreen',
-          resolve: {
-            items: function () {
-              return []
-            }
-          }
+          windowClass: 'modal-fullscreen'
         });
 
         function ModalInstanceCtrl() {

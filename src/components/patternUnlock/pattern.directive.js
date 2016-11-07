@@ -6,26 +6,52 @@
       size: 3 // 3x3
     })
 
-    .directive('pattern', pattern);
+    .directive('pattern', function() {
+      return {
+        restrict: 'E',
+        templateUrl: 'components/patternUnlock/views/pattern.directive.html',
+        link: function() {
 
-  function pattern() {
-    return {
-      restrict: 'E',
-      templateUrl: 'components/patternUnlock/views/pattern.directive.html',
-      link: function() {
-
-      },
-      controller: PatternCtrl,
-      controllerAs: '$ctrl',
-    }
-  }
+        },
+        controller: PatternCtrl,
+        controllerAs: '$ctrl',
+      }
+    })
 
   function PatternCtrl(PATTERN_OPTIONS) {
     var $ctrl = this;
 
     $ctrl.patternSize = PATTERN_OPTIONS.size;
-    console.log($ctrl.patternSize);
-    $ctrl.nodes = [1,2,3,4,5,6,7,8,9];
+    $ctrl.nodes = generateNodes(PATTERN_OPTIONS.size);
+    $ctrl.lines = [
+      {
+        style: {left: '145px', top: '145px'},
+        direction: 'x ne'
+      }
+    ];
+
+    $ctrl.toggleNode = function(index, isActive) {
+      if (typeof isActive != 'undefined') {
+        $ctrl.nodes[index].active = isActive
+      } else {
+        $ctrl.nodes[index].active = $ctrl.nodes[index].active? false: true;
+      }
+    }
+
+    $ctrl.drawLine = function(id1, id2) {
+
+    }
+  }
+
+  function generateNodes(size) {
+    var nodes = [];
+    for (var i = 1; i <= size * size; i++) {
+      nodes.push({
+        active: false
+      })
+    }
+
+    return nodes;
   }
 
 })();

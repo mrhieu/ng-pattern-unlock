@@ -42,7 +42,7 @@ gulp.task('watch', ['browser-sync'], function () {
 // Hieu Pham: auto inject JS files to index.html. Set yourself freeeeee
 gulp.task('inject', ['inject-vendor'], function(){
   return gulp.src('./src/index.html')
-    .pipe(inject(gulp.src(paths.components, {read: false}).pipe(angularFilesort()), {relative: true}))
+    .pipe(inject(gulp.src(paths.components, {read: true}).pipe(angularFilesort()), {relative: true}))
     .pipe(naturalSort())
     .pipe(gulp.dest('./src'))
 });

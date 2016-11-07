@@ -1,5 +1,14 @@
 <div class="pattern-container" ng-style="{'width': $ctrl.patternSize * 100 + 'px'}">
-  <div class="pattern-node" ng-repeat="node in $ctrl.nodes">
+  <div class="pattern-node"
+    ng-class="{'active': node.active}"
+    ng-repeat="node in $ctrl.nodes"
+    ng-click="$ctrl.toggleNode($index, true)">
     <div class="dot"></div>
   </div>
+  
+  <div class="pattern-line"
+    ng-repeat="line in $ctrl.lines"
+    ng-style="line.style"
+    ng-class="line.direction"
+  ></div>
 </div>
