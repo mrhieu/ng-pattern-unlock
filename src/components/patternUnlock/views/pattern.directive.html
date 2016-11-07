@@ -4,8 +4,9 @@
     ng-repeat="node in $ctrl.nodes"
     ng-click="$ctrl.toggleNode($index, true)">
     <div class="dot"></div>
+    <div class="label">{{$index}}</div>
   </div>
-  
+
   <div class="pattern-line"
     ng-repeat="line in $ctrl.lines"
     ng-style="line.style"

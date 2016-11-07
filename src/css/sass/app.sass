@@ -28,6 +28,9 @@ body
     height: 10px
     border-radius: 50%
     background-color: darken(#aaa, 20%)
+  .label
+    position: absolute
+    color: #777
 
 .pattern-line
   width: 110px
@@ -46,31 +49,33 @@ body
     transform: rotate(90deg)
   &.n
     transform: rotate(270deg)
-  &.x
+
+  &.es, &.se, &.en, &.ne, &.wn, &.nw, &.ws, &.sw
     width: 152px
-    &.es, &.se
-      transform: rotate(45deg)
-    &.en, &.ne
-      transform: rotate(-45deg)
-    &.wn, &.nw
-      transform: rotate(-135deg)
-    &.ws, &.sw
-      transform: rotate(135deg)
-  &.xx
+  &.es, &.se
+    transform: rotate(45deg)
+  &.en, &.ne
+    transform: rotate(-45deg)
+  &.wn, &.nw
+    transform: rotate(-135deg)
+  &.ws, &.sw
+    transform: rotate(135deg)
+
+  &.ees, &.sse, &.ssw, &.wws, &.wwn, &.nnw, &.nne, &.een
     width: 233px
-    &.ees
-      transform: rotate(26.5deg)
-    &.sse
-      transform: rotate(63.5deg)
-    &.ssw
-      transform: rotate(116.5deg)
-    &.wws
-      transform: rotate(153.5deg)
-    &.wwn
-      transform: rotate(206.5deg)
-    &.nnw
-      transform: rotate(243.5deg)
-    &.nne
-      transform: rotate(296.5deg)
-    &.een
-      transform: rotate(333.5deg)
+  &.ees
+    transform: rotate(26.5deg)
+  &.sse
+    transform: rotate(63.5deg)
+  &.ssw
+    transform: rotate(116.5deg)
+  &.wws
+    transform: rotate(153.5deg)
+  &.wwn
+    transform: rotate(206.5deg)
+  &.nnw
+    transform: rotate(243.5deg)
+  &.nne
+    transform: rotate(296.5deg)
+  &.een
+    transform: rotate(333.5deg)
