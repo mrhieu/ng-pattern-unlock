@@ -6,10 +6,13 @@
       size: 3 // 3x3
     })
 
-    .directive('pattern', function() {
+    .directive('pattern', function($timeout) {
       return {
         restrict: 'E',
         templateUrl: 'components/patternUnlock/views/pattern.directive.html',
+        bindToController: {
+          onDraw: '&'
+        },
         link: function(scope, el, attr, vm) {
           el.on('mousedown touchstart', function(e) {
             el.on('mousemove touchmove', function(e) {
@@ -26,11 +29,9 @@
           el.on('mouseup touchend', function(e) {
             el.off('mousemove touchmove');
 
-            el.on('click', function(e) {
-              vm.reset();
-              scope.$apply();
-              el.off('click');
-            });
+            $timeout(function() {
+              vm.output();
+            }, 500);
           });
         },
         controller: PatternCtrl,
@@ -73,6 +74,11 @@
       vm.nodes = generateNodes(PATTERN_OPTIONS.size);
       vm.lines = [];
       vm.pattern = [];
+    }
+
+    vm.output = function() {
+      vm.onDraw({pattern: vm.pattern});
+      vm.reset();
     }
   }
 

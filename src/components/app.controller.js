@@ -5,17 +5,24 @@
     .controller('AppCtrl', AppCtrl)
 
   AppCtrl.$inject = [
-    'PatternUnlockService'
+    'PatternUnlockService',
+    '$state'
   ];
 
-  function AppCtrl(PatternUnlockService) {
+  function AppCtrl(PatternUnlockService, $state) {
     var vm = this;
 
     vm.greeting = 'Hello world';
 
-    vm.unlock = function() {
-      PatternUnlockService.unlock();
+    vm.reset = function() {
+      PatternUnlockService.reset();
     }
-    vm.unlock();
+
+    vm.unlock = function() {
+      PatternUnlockService.unlock()
+        .then(function() {
+          $state.go('app.unlock');
+        });
+    }
   }
 })();
