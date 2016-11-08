@@ -17,9 +17,15 @@
         return $uibModal.open({
           templateUrl: 'components/patternUnlock/views/reset.modal.html',
           controller: function($scope, $localStorage, $uibModalInstance) {
+            $scope.errMessage = false;
+
             $scope.validate = function(pattern) {
-              $localStorage.pattern = pattern;
-              $uibModalInstance.close();
+              if (pattern.length < 4) {
+                $scope.errMessage = true;
+              } else {
+                $localStorage.pattern = pattern;
+                $uibModalInstance.close();
+              }
             }
           },
           keyboard: false,

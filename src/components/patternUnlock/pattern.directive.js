@@ -14,9 +14,13 @@
           onDraw: '&'
         },
         link: function(scope, el, attr, vm) {
-          el.on('mousedown touchstart', function(e) {
-            el.on('mousemove touchmove', function(e) {
-              var target = e.target || e.touches[0].target;
+          angular.element(el).on('mousedown touchstart', function(e) {
+            e.preventDefault();
+
+            angular.element(el).on('mousemove touchmove', function(e) {
+              e.preventDefault();
+
+              var target = e.type == 'touchmove' ? document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY) : e.target;
 
               // Dragging through the pattern-nodes
               if (target.className.indexOf('pattern-node') !== -1) {
@@ -26,13 +30,17 @@
             });
           });
 
-          el.on('mouseup touchend', function(e) {
-            el.off('mousemove touchmove');
+          angular.element(el).on('mouseup touchend', function(e) {
+            angular.element(el).off('mousemove touchmove');
 
             $timeout(function() {
               vm.output();
             }, 500);
           });
+
+          scope.$on('$destroy', function() {
+            angular.element(el).off('mousedown touchstart mousemove touchmove mouseup touchend');
+          })
         },
         controller: PatternCtrl,
         controllerAs: 'vm',

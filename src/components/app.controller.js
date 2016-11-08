@@ -20,7 +20,7 @@
 
     vm.unlock = function() {
       PatternUnlockService.unlock()
-        .then(function() {
+        .then(function() {// Success
           $state.go('app.unlock');
         });
     }
