@@ -10,14 +10,20 @@
       return {
         restrict: 'E',
         templateUrl: 'components/patternUnlock/views/pattern.directive.html',
-        link: function(scope, el, attr, ctrl) {
+        link: function(scope, el, attr, vm) {
           // e.touches[0].clientX/clientY
+
+          el.on('touchstart', function(e) {
+            el.on('touchmove', function(e) {
+              console.log(e.touches[0].target);
+            })
+          })
 
           el.on('mousedown', function(e) {
             el.on('mousemove', function(e) {
               // Dragging through the pattern-nodes
               if (e.target.className.indexOf('pattern-node') !== -1) {
-                ctrl.toggleNode(angular.element(e.target).attr('node-index'), true);
+                vm.toggleNode(angular.element(e.target).attr('node-index'), true);
                 scope.$apply();
               }
             });
@@ -25,13 +31,13 @@
 
           el.on('mouseup', function(e) {
             el.off('mousemove');
-          });
 
-          el.on('click', function(e) {
-            ctrl.reset();
-            scope.$apply();
+            el.on('click', function(e) {
+              vm.reset();
+              scope.$apply();
+              el.off('click');
+            });
           });
-
         },
         controller: PatternCtrl,
         controllerAs: 'vm',

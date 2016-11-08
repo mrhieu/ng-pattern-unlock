@@ -7,6 +7,7 @@ var inject = require('gulp-inject');
 var naturalSort = require('gulp-natural-sort');
 var angularFilesort = require('gulp-angular-filesort');
 var wiredep = require('wiredep').stream;
+var autoprefixer = require('gulp-autoprefixer');
 
 var paths = {
   components: ['./src/**/*.js', '!./src/components/app.*.js',],
@@ -29,6 +30,10 @@ gulp.task('browser-sync', function() {
 gulp.task('sass', function () {
   return gulp.src(paths.css)
     .pipe(sass())
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(gulp.dest('./src/css'))
     .pipe(browserSync.reload({stream: true}));
 });
