@@ -11,26 +11,20 @@
         restrict: 'E',
         templateUrl: 'components/patternUnlock/views/pattern.directive.html',
         link: function(scope, el, attr, vm) {
-          // e.touches[0].clientX/clientY
+          el.on('mousedown touchstart', function(e) {
+            el.on('mousemove touchmove', function(e) {
+              var target = e.target || e.touches[0].target;
 
-          el.on('touchstart', function(e) {
-            el.on('touchmove', function(e) {
-              console.log(e.touches[0].target);
-            })
-          })
-
-          el.on('mousedown', function(e) {
-            el.on('mousemove', function(e) {
               // Dragging through the pattern-nodes
-              if (e.target.className.indexOf('pattern-node') !== -1) {
-                vm.toggleNode(angular.element(e.target).attr('node-index'), true);
+              if (target.className.indexOf('pattern-node') !== -1) {
+                vm.toggleNode(angular.element(target).attr('node-index'), true);
                 scope.$apply();
               }
             });
           });
 
-          el.on('mouseup', function(e) {
-            el.off('mousemove');
+          el.on('mouseup touchend', function(e) {
+            el.off('mousemove touchmove');
 
             el.on('click', function(e) {
               vm.reset();
@@ -98,6 +92,7 @@
       style: {
         left: (100 * (id1 % size) + 45) + 'px',
         top: (100 * (parseInt(id1 / size)) + 45) + 'px',// left: 45px and top: 45px is the position of .pattern-line for node (1,1)
+        width: parseInt(100 * calculatedDistance(id1, id2, size) + 10) + 'px'
       },
       direction: calculatedDirection(id1, id2, size)
     }
@@ -148,6 +143,13 @@
     }
 
     return direction;
+  }
+
+  function calculatedDistance(id1, id2, size) {
+    var p1 = coordinate(id1, size);
+    var p2 = coordinate(id2, size);
+
+    return Math.sqrt((p1.x - p2.x) * (p1.x-p2.x) + (p1.y - p2.y) * (p1.y - p2.y));
   }
 
   function coordinate(id, size) {
