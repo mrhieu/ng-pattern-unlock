@@ -6,7 +6,9 @@
   "author": "Hieu Pham",
   "license": "MIT",
   "dependencies": {},
-  "scripts": {},
+  "scripts": {
+    "start": "gulp default"
+  },
   "devDependencies": {
     "browser-sync": "^2.17.0",
     "gulp": "^3.9.1",
@@ -15,13 +17,13 @@
     "gulp-inject": "^4.1.0",
     "gulp-jshint": "^2.0.1",
     "gulp-natural-sort": "^0.1.1",
-    "gulp-sass": "latest",
-    "gulp-util": "latest",
-    "jshint": "latest",
-    "jshint-stylish": "latest",
-    "require-dir": "latest",
-    "shelljs": "latest",
-    "through": "latest",
+    "gulp-sass": "^2.3.2",
+    "gulp-util": "^3.0.5",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "require-dir": "^0.3.2",
+    "shelljs": "^0.7.1",
+    "through": "^2.3.7",
     "wiredep": "^4.0.0"
   }
 }
